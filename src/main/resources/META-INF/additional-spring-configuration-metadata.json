@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "coupon.config.target",
+    "type": "java.lang.Integer",
+    "description": "'coupon.config.target' specifies the target orders needed to be able generate a coupon (Nth order value)."
+  },
+  {
+    "name": "coupon.config.discount",
+    "type": "java.lang.Double",
+    "description": "'coupon.config.discount' specifies the discount given when the coupon is applied (discount value)."
+  }
+]}
