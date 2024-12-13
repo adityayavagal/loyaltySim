@@ -1,7 +1,6 @@
 package com.aditya.loyaltysim.service;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
