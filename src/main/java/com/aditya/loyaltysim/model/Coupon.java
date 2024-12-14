@@ -16,13 +16,16 @@ public class Coupon {
 	private boolean isReedemed;
 	
 	private Timestamp reedemedAt;
+	
+	private double discount;
 
 	public Coupon() {
 	}
 
-	public Coupon(String couponCode) {
+	public Coupon(String couponCode, double discount) {
 		this.id = counter++;
 		this.couponCode = couponCode;
+		this.discount = discount;
 		createdAt = Timestamp.from(Instant.now());
 		isReedemed = false;
 	}
@@ -33,6 +36,10 @@ public class Coupon {
 
 	public Timestamp getCreatedAt() {
 		return createdAt;
+	}
+
+	public double getDiscount() {
+		return discount;
 	}
 
 	public int getId() {
@@ -55,7 +62,7 @@ public class Coupon {
 	@Override
 	public String toString() {
 		return "Coupon [id=" + id + ", couponCode=" + couponCode + ", createdAt=" + createdAt + ", isReedemed="
-				+ isReedemed + ", reedemedAt=" + reedemedAt + "]";
+				+ isReedemed + ", reedemedAt=" + reedemedAt + ", discount=" + discount + "]";
 	}
 
 }
