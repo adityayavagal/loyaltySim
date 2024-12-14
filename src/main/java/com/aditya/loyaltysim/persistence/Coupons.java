@@ -38,5 +38,12 @@ public class Coupons {
 					
 	}
 	
+	public Coupon findUnReedemedCoupon() {
+		return couponList.stream()
+				.filter(coupon -> !coupon.isReedemed())
+				.findFirst()
+				.orElse(null);
+	}
+	
 
 }

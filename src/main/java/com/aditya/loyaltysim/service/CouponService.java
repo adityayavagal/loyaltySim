@@ -28,14 +28,29 @@ public class CouponService {
 		return couponDao.getAllCoupons();
 	}
 	
+	public boolean checkAvailableOffer() {
+		int ordersCount = orderService.getAllOrders().size();
+		if (ordersCount > 0 && ((ordersCount + 1) % target == 0)) {
+			return true;
+		}
+		return false;
+	}
+	
+	private Coupon getCoupon() {
+		Coupon coupon = couponDao.findUnReedemedCoupon();
+		if (coupon == null) {
+			String couponCode = randomAlphanumericString(8);
+			coupon = new Coupon(couponCode, discount);
+			couponDao.saveCoupon(coupon);
+		}
+		return coupon;
+	}
+	
 	public Coupon generateCoupon() {
 		int ordersCount = orderService.getAllOrders().size();
-		
 		if (ordersCount > 0 && ((ordersCount + 1) % target == 0)) {
-			String couponCode = randomAlphanumericString(8);
-			Coupon coupon = new Coupon(couponCode);
-			couponDao.saveCoupon(coupon);
-			return coupon;
+			return getCoupon();
+			
 		}
 		return null;
 	}
