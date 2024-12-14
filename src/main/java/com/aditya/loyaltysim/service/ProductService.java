@@ -1,6 +1,6 @@
 package com.aditya.loyaltysim.service;
 
-import java.io.File;
+import java.io.InputStream;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -23,8 +23,8 @@ public class ProductService {
 		
 		try {
 			List<Product> products;
-			File file = new File(getClass().getClassLoader().getResource("products.json").getFile());
-			products = objMapper.readValue(file, new TypeReference<List<Product>>() {
+			InputStream inputStream = getClass().getClassLoader().getResourceAsStream("products.json");
+			products = objMapper.readValue(inputStream, new TypeReference<List<Product>>() {
 			});
 			saveBulkProducts(products);
 		} catch (Exception e) {
