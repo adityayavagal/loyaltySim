@@ -1,4 +1,4 @@
 coupon:
   config:
-    target: 1
+    target: 5
     discount: 10.0
